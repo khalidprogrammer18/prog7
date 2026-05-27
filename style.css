@@ -1,0 +1,79 @@
+/* ==========================================================================
+   1. التنسيق الافتراضي الأساسي (الهاتف - Mobile View)
+   ========================================================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* الحاوية تصطف عمودياً بشكل افتراضي في الهواتف */
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* الصناديق تأخذ العرض الكامل تلقائياً (صندوق واحد أفقي في السطر) */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-sizing: border-box;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.card h2 {
+    font-size: 1.4rem;
+    margin: 10px 0;
+}
+
+/* ==========================================================================
+   2. استعلام التابلت - Query #1: Tablet View (Triggers at 772px)
+   ========================================================================== */
+@media screen and (min-width: 772px) {
+    
+    /* تغيير تدفق الحاوية الأبوية لتصطف الصناديق أفقياً بجانب بعضها */
+    .gallery-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* تغيير عرض الصناديق لتصبح 45% من عرض الشاشة (يتسع السطر لصندوقين) */
+    .card {
+        width: 45vw; 
+    }
+
+    /* تحديد الارتفاع الأقصى للصور بحيث لا يتجاوز 30% من ارتفاع الشاشة */
+    .card img {
+        max-height: 30vh;
+    }
+}
+
+/* ==========================================================================
+   3. استعلام الشاشات الكبيرة - Query #2: Large Screen View (Triggers at 998px)
+   ========================================================================== */
+@media screen and (min-width: 998px) {
+    
+    /* تعديل عرض الصناديق لتصبح 30% من عرض الشاشة (يتسع السطر لثلاثة صناديق متجاورة) */
+    .card {
+        width: 30vw;
+    }
+}
